@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Íslensk námsgögn — Hvað er að gerast?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #ffffff;
+  --off-white: #f7f6f2;
+  --light: #eeecea;
+  --mid: #d4d0c8;
+  --dark-mid: #8a8680;
+  --dark: #2c2b27;
+  --ink: #181815;
+  --accent: #1a4a7a;
+  --accent-light: #e8f0f9;
+  --warm: #7a4f1a;
+  --warn: #8b1a1a;
+  --warn-light: #fdf0f0;
+  --teal: #1a5c4a;
+  --teal-light: #e8f5f0;
+  --rule: rgba(24,24,21,0.1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--ink); font-size: 18px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; }
+.nav-brand { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 400; color: var(--dark-mid); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+
+/* HERO */
+.hero { min-height: 88vh; display: flex; align-items: center; padding: 6rem 2.5rem 5rem; background: var(--off-white); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,74,122,0.04) 0%, transparent 60%); }
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+.hero-h1 { font-family: 'Lora', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.5rem; max-width: 18ch; }
+.hero-lead { font-size: 1.1rem; line-height: 1.75; color: #4a4a45; max-width: 54ch; margin-bottom: 3rem; }
+.hero-lead strong { color: var(--ink); font-weight: 600; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; max-width: 620px; }
+.hero-stat { background: var(--white); padding: 1.25rem 1.5rem; }
+.hero-stat-n { font-family: 'Lora', serif; font-size: 2.4rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+.hero-stat-n.warn { color: var(--warn); }
+.hero-stat-desc { font-size: 12px; line-height: 1.45; color: var(--dark-mid); margin-top: 0.4rem; }
+.hero-scroll { margin-top: 4rem; font-size: 13px; color: var(--dark-mid); display: flex; align-items: center; gap: 0.5rem; }
+.hero-scroll::after { content: '↓'; animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* LAYOUT */
+.section { padding: 5rem 2.5rem; }
+.section.shaded { background: var(--off-white); }
+.section-inner { max-width: 860px; margin: 0 auto; }
+.hr { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* TYPOGRAPHY */
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+.label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: currentColor; }
+h2 { font-family: 'Lora', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+h3.sub { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 700; line-height: 1.3; margin: 2.5rem 0 0.75rem; }
+.body-text { font-size: 1rem; line-height: 1.75; color: #4a4a45; max-width: 64ch; }
+
+/* FOOTNOTES */
+sup a { font-size: 10px; font-weight: 600; color: var(--accent); text-decoration: none; line-height: 0; vertical-align: super; }
+sup a:hover { text-decoration: underline; }
+.footnotes { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+.footnotes ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.footnotes li { font-size: 13px; line-height: 1.6; color: var(--dark-mid); }
+.footnotes li a { color: var(--accent); text-decoration: none; }
+
+/* CALLOUT */
+.callout { border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; background: var(--accent-light); margin: 2.25rem 0; border-radius: 0 4px 4px 0; }
+.callout p { font-family: 'Lora', serif; font-style: italic; font-size: 1.05rem; line-height: 1.65; color: var(--ink); }
+.callout cite { display: block; font-family: 'Source Sans 3', sans-serif; font-style: normal; font-size: 13px; color: var(--dark-mid); margin-top: 0.6rem; }
+
+/* DATA GRID */
+.data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 2.5rem 0; }
+.data-cell { background: var(--white); padding: 1.5rem; }
+.data-n { font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+.data-n.warn { color: var(--warn); }
+.data-n.teal { color: var(--teal); }
+.data-desc { font-size: 13px; line-height: 1.5; color: #6a6a65; margin-top: 0.5rem; }
+.data-src { font-size: 11px; color: var(--dark-mid); margin-top: 0.6rem; font-style: italic; }
+
+/* CHART */
+.chart-wrap { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 2rem 1.5rem 1.5rem; margin: 2.5rem 0; }
+.chart-title { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-mid); margin-bottom: 1.5rem; }
+.chart-canvas-wrap { position: relative; height: 360px; }
+.chart-legend { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.25rem; }
+.chart-legend-item { display: flex; align-items: center; gap: 0.75rem; font-size: 13px; color: var(--dark-mid); }
+.legend-swatch { width: 28px; height: 0; flex-shrink: 0; }
+.chart-source { font-size: 12px; color: var(--dark-mid); margin-top: 1rem; font-style: italic; line-height: 1.5; }
+
+/* BAR CHART */
+.bar-chart { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.85rem; }
+.bar-row { display: grid; grid-template-columns: 110px 1fr 80px; align-items: center; gap: 1rem; }
+.bar-country { font-size: 14px; font-weight: 500; color: var(--dark); text-align: right; }
+.bar-track { background: var(--light); border-radius: 2px; height: 28px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 2px; }
+.bar-fill.is { background: var(--warn); }
+.bar-fill.nordic { background: var(--teal); }
+.bar-fill.nordic-hi { background: var(--accent); }
+.bar-val { font-size: 14px; font-weight: 600; color: var(--dark); }
+
+/* COMPARE */
+.compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 2.5rem 0; }
+.compare-cell { background: var(--white); padding: 1.75rem; }
+.compare-cell.contrast { background: var(--accent); }
+.compare-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-mid); margin-bottom: 0.75rem; }
+.compare-cell.contrast .compare-label { color: rgba(255,255,255,0.55); }
+.compare-body { font-size: 15px; line-height: 1.7; color: #4a4a45; }
+.compare-body strong { color: var(--ink); font-weight: 600; }
+.compare-cell.contrast .compare-body { color: rgba(255,255,255,0.88); }
+.compare-cell.contrast .compare-body strong { color: var(--white); }
+
+/* TIMELINE */
+.timeline { margin: 2.5rem 0; position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--mid); }
+.tl-item { position: relative; padding-bottom: 2rem; }
+.tl-dot { position: absolute; left: -2rem; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--white); border: 2px solid var(--mid); }
+.tl-dot.active { border-color: var(--accent); background: var(--accent); }
+.tl-dot.dim { border-color: var(--mid); }
+.tl-year { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
+.tl-year.dim { color: var(--dark-mid); }
+.tl-text { font-size: 15px; color: #4a4a45; line-height: 1.65; }
+
+/* PISA */
+.pisa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.pisa-card { border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem; background: var(--white); }
+.pisa-card.alert { border-color: #c8a0a0; background: var(--warn-light); }
+.pisa-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--dark-mid); margin-bottom: 0.4rem; }
+.pisa-n { font-family: 'Lora', serif; font-size: 2.8rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+.pisa-n.bad { color: var(--warn); }
+.pisa-n.ok { color: var(--teal); }
+.pisa-desc { font-size: 14px; line-height: 1.55; color: #4a4a45; margin-top: 0.5rem; }
+
+/* TEACHER */
+.teacher-intro { background: var(--ink); color: var(--white); border-radius: 4px; padding: 2.5rem; margin: 2rem 0; }
+.teacher-intro h3 { font-family: 'Lora', serif; font-size: 1.35rem; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 0.9rem; line-height: 1.3; }
+.teacher-intro p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+.teacher-intro strong { color: rgba(255,255,255,0.88); font-weight: 600; }
+
+.burden-bar-wrap { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.burden-row { display: flex; align-items: center; gap: 1rem; }
+.burden-label { font-size: 14px; color: var(--dark); width: 280px; flex-shrink: 0; line-height: 1.4; }
+.burden-track { flex: 1; background: var(--light); border-radius: 2px; height: 12px; overflow: hidden; }
+.burden-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+.burden-pct { font-size: 14px; font-weight: 600; color: var(--accent); min-width: 36px; }
+
+/* LESFIMI */
+.lesfimi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 2rem 0; }
+.lesfimi-cell { background: var(--white); padding: 1.25rem; }
+.lesfimi-region { font-size: 13px; font-weight: 600; color: var(--dark-mid); margin-bottom: 0.3rem; }
+.lesfimi-pct { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.lesfimi-pct.high { color: var(--teal); }
+.lesfimi-pct.mid { color: var(--warm); }
+.lesfimi-pct.low { color: var(--warn); }
+.lesfimi-change { font-size: 12px; color: var(--dark-mid); margin-top: 0.2rem; }
+
+/* DEMANDS */
+.demands { list-style: none; margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.demands li { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 1.5rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--white); font-size: 15px; line-height: 1.65; color: #4a4a45; }
+.demand-n { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; padding-top: 0.1rem; }
+
+/* FOOTER */
+footer { background: var(--ink); color: rgba(255,255,255,0.45); padding: 3.5rem 2.5rem; font-size: 13px; line-height: 1.7; }
+.footer-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+.footer-brand { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
+.footer-brand span { color: rgba(150,190,240,0.9); }
+footer a { color: rgba(255,255,255,0.5); }
+footer h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: rgba(255,255,255,0.25); margin-bottom: 0.75rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+
+@media (max-width: 700px) {
+  .hero-stats { grid-template-columns: 1fr; }
+  .pisa-grid, .compare-row { grid-template-columns: 1fr; }
+  .lesfimi-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .bar-row { grid-template-columns: 80px 1fr 55px; }
+  .burden-label { width: 160px; }
+  nav { padding: 0 1.25rem; }
+  .nav-links { gap: 1rem; }
+  .section { padding: 3.5rem 1.25rem; }
+  .hero { padding: 3.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">íslensk<span>námsgögn</span>.is</a>
+  <ul class="nav-links">
+    <li><a href="#vandinn">Vandinn</a></li>
+    <li><a href="#áhrif">Áhrif</a></li>
+    <li><a href="#kennarar">Kennarar</a></li>
+    <li><a href="#tillögur">Tillögur</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Íslenskt menntakerfi · Maí 2026</p>
+    <h1 class="hero-h1">Námsgögn<br><span style="color: var(--accent);">Vanrækt grunnstoð</span></h1>
+    <p class="hero-lead">Í nær tvo áratugi hefur fjármagn til þróunar og kaupa á námsgögn rýrnað í íslenska skólakerfinu. Áhrifin eru mælanleg: námsárangur barna er að falla, munur á námsárangri milli sveitarfélaga eykst og félagslegur bakgrunnur er farinn að hafa meiri áhrif á hvernig börnum gengur í skóla og kennarar eyða sífellt meiri tíma í að búa til námsgögn — tíma sem ætti að fara í kennslu.<br><br><strong>Íslenskir kennarar eru ekki lakari en kennarar annars staðar. Þeir fá bara minna til að vinna með.</strong></p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n">~35%</div>
+        <div class="hero-stat-desc">Fjármagn til kerfisins á raunvirði miðað við 2007</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n warn">47%</div>
+        <div class="hero-stat-desc">drengja í 10. bekk ná ekki grunnhæfni í lesskilningi — tvöföldun frá 2009</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">0,4%</div>
+        <div class="hero-stat-desc">af kostnaði grunnskóla fer í námsgögn. Á Norðurlöndum: 1,5–4%</div>
+      </div>
+    </div>
+    <p class="hero-scroll">Lestu meira</p>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- 1. HVAÐ ER NÁMSEFNI -->
+<section class="section" id="vandinn">
+  <div class="section-inner">
+    <p class="label">Upphafspunkturinn</p>
+    <h2>Hvað eru námsgögn og hvers vegna skipta þau máli?</h2>
+    <p class="body-text">Þegar þú hugsar um skóladag barns þíns hugsar þú líklega um kennarann. En á bak við hvern góðan kennara eru verkfæri: námsefni, bækur, tækni, æfingar, myndefni og þemaverkefni. Námsgögn sem eru hönnuð af sérfræðingum til að mæta nemendum þar sem þeir standa.<sup><a href="#fn1" id="ref1">1</a></sup></p>
+
+    <div class="compare-row">
+      <div class="compare-cell">
+        <div class="compare-label">Í flestum löndum</div>
+        <div class="compare-body">Kennarinn velur úr fjölbreyttu úrvali námsgagna sem búið er til af sérfræðingum — ritstjórum, kennslufræðingum, hönnuðum. Hann getur nálgast bækur, stafrænt efni og verkefni hannað fyrir ólíkar þarfir og hæfnistig. <strong>Kennarinn er fagaðilinn sem hefur valið.</strong></div>
+      </div>
+      <div class="compare-cell contrast">
+        <div class="compare-label">Á Íslandi</div>
+        <div class="compare-body">Framboð á vönduðum námsgögnum er takmarkað og fjármagn til þróunar og kaupa á námsefni hefur rýrnað í áratugi. Um 70% kennara nota námsefni sem útbúið er í skólanum oft eða mjög oft. Námsefni sem oft er unnið á kvöldin eða um helgar af óeigingirni <strong>vegna þess að það er ekki til neitt annað.</strong></div>
+      </div>
+    </div>
+
+    <p class="body-text">Vandinn er ekki að íslenskir kennarar séu ekki nógu duglegir eða hæfir. Vandinn er að kerfið hefur í áratugi gefið þeim of lítið til að vinna með. Þessa stöðu má rekja til langrar sögu. Afleiðingarnar eru mælanlegar og sjást mjög glöggt í mælingum á námsárangri og álagi á starf kennara.<sup><a href="#fn2" id="ref2">2</a></sup></p>
+
+    <div class="footnotes">
+      <ol>
+        <li id="fn1">Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn — Skýrsla starfshóps um námsgögn.</em> Starfshópur 18 hagsmunaaðila skilgreindi námsgögn sem „öll þau gögn sem eru notuð í skipulögðu námi á leik-, grunn- og framhaldsskólastigi." <a href="#ref1">↑</a></li>
+        <li id="fn2">Sama heimild. Sjá einnig: OECD (2025). <em>OECD Economic Surveys: Iceland 2025.</em> OECD Publishing — sem rekur þróun fjárveitinga til námsgagna og tengir hana við versnandi námsárangur yfir tímabilið. <a href="#ref2">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 2. FJÁRMAGN -->
+<section class="section shaded">
+  <div class="section-inner">
+    <p class="label">Fjárhagsleg staðan</p>
+    <h2>Heildarfjármagn námsgagnakerfisins 2007–2026</h2>
+    <p class="body-text">Þrjár stoðir bera kerfið: Miðstöð menntunar og skólaþjónustu, Námsgagnasjóður og Þróunarsjóður námsgagna. Grafið sýnir þróun heildarfjármagns þeirra allra á nafnvirði — og hvað þyrfti til að fylgja verðlagi, lágmarksviðmiðum Norðurlanda eða meðaltali þeirra.<sup><a href="#fn3" id="ref3">3</a></sup></p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Heildarfjármagn námsgagnakerfisins 2007–2026 (m.kr. á nafnvirði)</div>
+      <div class="chart-canvas-wrap"><canvas id="fundingChart"></canvas></div>
+      <div class="chart-legend">
+        <div class="chart-legend-item"><div class="legend-swatch" style="border-top: 2.5px solid #8b1a1a;"></div> Raunverulegt fjármagn (allar þrjár stoðirnar)</div>
+        <div class="chart-legend-item"><div class="legend-swatch" style="border-top: 2px dashed #1a4a7a;"></div> Þyrfti til að viðhalda raunvirði 2007</div>
+        <div class="chart-legend-item"><div class="legend-swatch" style="border-top: 2px dashed #1a5c4a;"></div> Lágmarksviðmið á Norðurlöndum (1,5% af rekstrarkostnaði grunnskóla)</div>
+        <div class="chart-legend-item"><div class="legend-swatch" style="border-top: 2px dotted #2c2b27;"></div> Meðaltal á Norðurlöndum (2,5% af rekstrarkostnaði grunnskóla)</div>
+      </div>
+      <p class="chart-source">Heimild: Þróunarsjóður námsgagna (2024); Miðstöð menntunar og skólaþjónustu (2025); Mennta- og barnamálaráðuneytið (2024). Norðurlandalínur byggðar á 1,5% og 2,5% af áætluðum rekstrarkostnaði grunnskóla. Þróunarlínur eru áætlaðar.</p>
+    </div>
+
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-n">~630 m.kr.</div>
+        <div class="data-desc">Heildarfjármagn til kerfisins í dag</div>
+        <div class="data-src">Þróunarsjóður námsgagna, 2024</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-n teal">1.734 m.kr.</div>
+        <div class="data-desc">Hefði verið fjármagn ef upphafsáætlanir 2007 hefðu náð fram</div>
+        <div class="data-src">Starfshópur um námsgögn, 2024</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-n warn">0,4%</div>
+        <div class="data-desc">af rekstrarkostnaði grunnskóla fer í námsgögn</div>
+        <div class="data-src">Mennta- og barnamálaráðuneytið, 2024</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-n">1,5–4%</div>
+        <div class="data-desc">er hlutfallið á Norðurlöndunum</div>
+        <div class="data-src">Starfshópur um námsgögn, 2024</div>
+      </div>
+    </div>
+
+    <p class="label" style="margin-top: 2.5rem; margin-bottom: 1rem;">Samanburður við Norðurlönd — hlutfall rekstrarkostnaðar í námsgögn</p>
+    <div class="bar-chart">
+      <div class="bar-row"><div class="bar-country">Ísland</div><div class="bar-track"><div class="bar-fill is" style="width:7%"></div></div><div class="bar-val">0,4%</div></div>
+      <div class="bar-row"><div class="bar-country">Danmörk</div><div class="bar-track"><div class="bar-fill nordic" style="width:26%"></div></div><div class="bar-val">1,5%</div></div>
+      <div class="bar-row"><div class="bar-country">Svíþjóð</div><div class="bar-track"><div class="bar-fill nordic" style="width:35%"></div></div><div class="bar-val">2%</div></div>
+      <div class="bar-row"><div class="bar-country">Noregur</div><div class="bar-track"><div class="bar-fill nordic" style="width:44%"></div></div><div class="bar-val">2,5%</div></div>
+      <div class="bar-row"><div class="bar-country">Finnland</div><div class="bar-track"><div class="bar-fill nordic-hi" style="width:70%"></div></div><div class="bar-val">1,5–4%</div></div>
+    </div>
+    <p style="font-size: 12px; color: var(--dark-mid); font-style: italic; margin-top: 0.5rem;">Heimild: Mennta- og barnamálaráðuneytið (2024).</p>
+
+    <div class="callout">
+      <p>„Hefðu upphafsáætlanir náð fram að ganga hefðu sjóðirnir verið langtum veigameiri. Upphafleg fjárhæð hvors sjóðs var um 100 m.kr. sem að núvirði er um 461 m.kr. Þessi þróun varð þó ekki raunin og hafa sjóðirnir þess í stað rýrnað — nú tæplega 33% þeirrar fjárhæðar sem hefði átt að vera í þeim."</p>
+      <cite>— Skýrsla starfshóps um námsgögn, 2024 (18 hagsmunaaðilar)<sup><a href="#fn4" id="ref4">4</a></sup></cite>
+    </div>
+
+    <div class="footnotes">
+      <ol start="3">
+        <li id="fn3">MMS námsgagnasvið: 2023: 422 m.kr., 2024: 489 m.kr., 2025: 458 m.kr. (Miðstöð menntunar og skólaþjónustu, 2025). Námsgagnasjóður: ~82 m.kr. (2024). Þróunarsjóður námsgagna: ~90 m.kr. (2026). Þróunarsjóður námsgagna (2024). <em>Tölulegar upplýsingar um fjármögnun 2007–2026</em> [innra skjal]. <a href="#ref3">↑</a></li>
+        <li id="fn4">Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn — Skýrsla starfshóps um námsgögn.</em> Starfshópurinn samanstóð af fulltrúum 18 hagsmunaaðila: Kennarasamband Íslands, Skólameistarafélagið, Félag íslenskra bókaútgefenda, Samfélag (nemendaráð), Samband íslenskra sveitarfélaga, Samtök menntatæknifyrirtækja, Háskóli Íslands og Háskólinn á Akureyri, m.fl. <a href="#ref4">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 3. ÁHRIF -->
+<section class="section" id="áhrif">
+  <div class="section-inner">
+    <p class="label">Áhrif á börnin okkar</p>
+    <h2>Hvað gerist þegar skortur er á vönduðum námsgögnum?</h2>
+
+    <p class="body-text">Til þess að skilja hvers vegna námsárangur skiptir máli í þessu samhengi þarf að setja hlutina í samhengi. Rannsóknir á áhrifaþáttum í menntun sýna að gæði námsgagna er ein af þremur grunnstoðum árangursríks skólastarfs — ásamt góðri aðalnámskrá og sjálfstæðum fagmenntaðum kennurum.<sup><a href="#fn5" id="ref5">5</a></sup></p>
+
+    <p class="body-text" style="margin-top: 1rem;">Alþjóðlegar rannsóknir á starfsaðstæðum kennara sýna að íslenskir kennarar eyða meira tíma í undirbúning og stjórnsýslulegar skyldur en kennarar í flestum samanburðarlöndum.<sup><a href="#fn5a" id="ref5a">5a</a></sup> Þegar lögbundið efni er ekki til eða úrelt þurfa kennarar að fylla í bilið sjálfir, sem þýðir minni tími í eiginlega kennslu og fagþróun.<sup><a href="#fn5" id="ref5a-b">5</a></sup> Þeir nemendur sem þurfa mest á fjölbreyttu efni að halda eru nemendur sem eru með undirliggjandi vanda eða alast upp við félagslega krefjandi aðstæður. Bilið milli barna sem búa við bágust kjör breikkar og sérkennsluþörf eykst.</p>
+
+    <div class="compare-row" style="margin: 2rem 0;">
+      <div class="compare-cell">
+        <div class="compare-label">Rannsóknir sýna</div>
+        <div class="compare-body">Námsgögn hannað með margmiðlun — texta, myndir, hljóð — eftir þekktum hönnunarreglum leiðir til mun betri námsárangurs en efni á einum miðli. Þetta á sérstaklega við um þá sem eiga í erfiðleikum með hefðbundnar aðferðir.<sup><a href="#fn6" id="ref6">6</a></sup></div>
+      </div>
+      <div class="compare-cell contrast">
+        <div class="compare-label">Staðan á Íslandi</div>
+        <div class="compare-body">70% kennara búa til eigið námsgögn oft eða mjög oft. Slíkt efni er sjaldan hannað af ritstjóra, hönnuði eða kennslufræðingi. Það nær sjaldnast til annarra skóla eða annarra kennara. <strong>Kerfið er byggt upp á fórnfýsi kennara.</strong></div>
+      </div>
+    </div>
+
+    <h3 class="sub">Hvað mælingarnar segja okkur</h3>
+    <p class="body-text">Alþjóðlegar rannsóknir mæla reglulega hæfni nemenda í lesskilningi, stærðfræði og náttúrufræðum. Ísland hefur tekið þátt í slíkum mælingum frá árinu 2000. Þróunin er skýr.<sup><a href="#fn7" id="ref7">7</a></sup></p>
+
+    <div class="pisa-grid">
+      <div class="pisa-card alert">
+        <div class="pisa-label">Drengir · Lesskilningur · 2022</div>
+        <div class="pisa-n bad">47%</div>
+        <div class="pisa-desc">ná ekki grunnhæfni í lesskilningi. Þetta er tvöföldun frá 2009. Um helmingur drengja fer úr grunnskóla án þess að geta lesið sér til gagns.</div>
+      </div>
+      <div class="pisa-card alert">
+        <div class="pisa-label">Stúlkur · Lesskilningur · 2022</div>
+        <div class="pisa-n bad">32%</div>
+        <div class="pisa-desc">ná ekki grunnhæfni. Kynjamunurinn á Íslandi er meðal hæstur í samanburðarlöndum — og hann hefur aukist.</div>
+      </div>
+      <div class="pisa-card">
+        <div class="pisa-label">Afburðahæfni · 2022</div>
+        <div class="pisa-n bad">3%</div>
+        <div class="pisa-desc">íslenskra nemenda ná afburðahæfni í lesskilningi — á móti 7% meðaltals samanburðarlanda.</div>
+      </div>
+      <div class="pisa-card">
+        <div class="pisa-label">Nemendur með erlendan bakgrunn</div>
+        <div class="pisa-n bad">29%</div>
+        <div class="pisa-desc">grunnskólanemenda 2023 (úr 16% árið 2008).<sup><a href="#fn8" id="ref8">8</a></sup> Bilið í námsárangri þessa hóps er meðal hæsta í samanburðarlöndum.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>„Íslenskir nemendur eiga almennt erfiðast með verkefni sem snúast um að meta texta og bera þá saman — nákvæmlega sú hæfni sem þjálfast þegar nemendur hafa aðgang að fjölbreyttum og vel hönnuðum námsgögnum."</p>
+      <cite>— Mennta- og barnamálaráðuneytið, <em>Staða drengja í menntakerfinu</em>, 2024<sup><a href="#fn9" id="ref9">9</a></sup></cite>
+    </div>
+
+    <p class="body-text">Það er mikilvægt að taka skýrt fram: engin ein ástæða skýrir alla þessa þróun. En rannsóknir sýna eindregið að þegar framboð á vönduðum námsgögnum er ófullnægjandi eykst munurinn á námsárangri eftir efnahagslegum og félagslegum bakgrunni. Kerfið nær þá ekki til þeirra sem þurfa mestan stuðninginn.<sup><a href="#fn5">5</a></sup></p>
+
+    <h3 class="sub"><span style="color: var(--accent);">Sérkennsla</span> — Eina leiðin sem kerfið hefur til að bregðast við</h3>
+    <p class="body-text">Hlutfall nemenda í sérkennslu hækkaði úr 22% árið 2010 í 31% árið 2019 og er enn vaxandi.<sup><a href="#fn10" id="ref10">10</a></sup> Þörfin á sérkennslu á sér fjölþættar rætur — lestrarvandi, taugalíffræðilegir þættir, félagslegur bakgrunnur og agavandamál eru meðal þeirra — og vönduð námsgögn ein og sér leysa ekki alla þessa þætti. En hluti þessarar þróunar endurspeglar einnig að almenna kerfið nær ekki til nógu margra nemenda.</p>
+
+    <p class="body-text" style="margin-top: 1rem;">Þegar námsgögn eru hönnuð með fjölbreyttar námsþarfir í huga, mismunandi erfiðleikastig, ólíkar kennsluaðferðir, aðgengi fyrir þá sem glíma við lestrarvanda og fleira, fá fleiri nemendur þann stuðning sem þeir þurfa án þess að þurfa að bíða eftir sérúrræðum. Sérkennsla er nauðsynleg þjónusta. En hún er einnig margfalt dýrari á hvern nemanda en fjárfesting í fjölbreyttum námsgögnum, og kemur of seint fyrir of marga.</p>
+
+    <div class="data-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-top: 1.5rem;">
+      <div class="data-cell"><div class="data-n">22%</div><div class="data-desc">nemenda í sérkennslu 2010</div><div class="data-src">Hagstofa Íslands, 2024</div></div>
+      <div class="data-cell"><div class="data-n warn">31%</div><div class="data-desc">nemenda í sérkennslu 2019 — og enn að vaxa</div><div class="data-src">Hagstofa Íslands, 2024</div></div>
+      <div class="data-cell"><div class="data-n">+39%</div><div class="data-desc">starfsmenn grunnskóla fjölguðu á sama tíma (nemendur: +8%)</div><div class="data-src">Hagstofa Íslands, 2019</div></div>
+    </div>
+
+    <div class="footnotes">
+      <ol start="5">
+        <li id="fn5">Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn — Skýrsla starfshóps um námsgögn.</em> Starfshópurinn vitnar í Hattie, J. (2009). <em>Visible Learning: A synthesis of over 800 meta-analyses relating to achievement.</em> Routledge; og UNESCO (2021). <em>Educational content and learning outcomes — Global education monitoring report.</em> <a href="#ref5">↑</a></li>
+        <li id="fn5a">OECD (2019). <em>TALIS 2018 results (Volume I): Teachers and school leaders as lifelong learners.</em> OECD Publishing. Íslenskir kennarar skora lægst í OECD á mælikvarða yfir skýrleika í kennslu og eyða meira tíma í undirbúnings- og stjórnsýsluverkefni en kennarar í flestum öðrum OECD-löndum. Sjá einnig: OECD (2025). <em>OECD Economic Surveys: Iceland 2025.</em> <a href="#ref5a">↑</a></li>
+        <li id="fn5b">Mennta- og barnamálaráðuneytið (2024b). <em>Staða drengja í menntakerfinu</em> (höf. Tryggvi Hjaltason): „Kennarar kvarta undan því að hafa lítinn tíma til að geta fundið viðeigandi námsgögn sem henta mismunandi börnum." <a href="#ref5b">↑</a></li>
+        <li id="fn6">Mayer, R. E. (2009). <em>Multimedia learning</em> (2. útg.). Cambridge University Press. Sjá einnig: Sweller, J. (2011). Cognitive load theory. Í <em>Psychology of learning and motivation.</em> Academic Press. <a href="#ref6">↑</a></li>
+        <li id="fn7">OECD (2023). <em>PISA 2022 results: The state of learning and equity in education (Volume I).</em> OECD Publishing. https://doi.org/10.1787/53f23881-en. Sjá einnig: OECD (2025). <em>OECD Economic Surveys: Iceland 2025.</em> <a href="#ref7">↑</a></li>
+        <li id="fn8">Mennta- og barnamálaráðuneytið (2024). <em>Hver er staðan í menntakerfinu? Samantekt.</em> September 2024: „Á árunum 2008 til 2023 hækkaði hlutfall nemenda með erlendan bakgrunn í grunnskólum úr 16% í 29%." Nemandi telst hafa erlendan bakgrunn ef hann er fæddur erlendis eða fæddur á Íslandi en annað eða bæði foreldri eru erlend. <a href="#ref8">↑</a></li>
+        <li id="fn9">Mennta- og barnamálaráðuneytið (2024b). <em>Staða drengja í menntakerfinu — Tillögur að úrbótum</em> (höf. Tryggvi Hjaltason). <a href="#ref9">↑</a></li>
+        <li id="fn10">Hagstofa Íslands (2024). <em>Grunnskólahald eftir ári og nemendum með sérþarfir.</em> <a href="#ref10">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 4. KENNARAR -->
+<section class="section shaded" id="kennarar">
+  <div class="section-inner">
+    <p class="label">Álag á kennara</p>
+    <h2>Kennarinn sem á að kenna — en er að framleiða</h2>
+
+    <p class="body-text">Í löndunum sem við berum okkur gjarnan saman við getur kennarinn valið úr fjölbreyttu úrvali vandaðra námsgagna — efni hannað af sérfræðingum, prófað í bekk, byggt á kennslufræðilegum grunni. Kennarinn velur það sem hentar sinni nemendasamsetningu á hverjum tíma. Á Íslandi er staðan önnur. Þegar efnið er ekki til eða er of gamalt, of þröngt eða úrelt, þarf kennarinn að sækja í eigin kraft.</p>
+
+    <div class="chart-wrap" style="margin-top: 1.5rem;">
+      <div class="chart-title">Hversu oft nota kennarar námsefni sem útbúið er í skólanum?<sup><a href="#fn10" id="ref10">10</a></sup></div>
+      <div class="burden-bar-wrap" style="margin-top: 0;">
+        <div class="burden-row">
+          <div class="burden-label">Nota heimatilbúið námsefni <strong>oft eða mjög oft</strong></div>
+          <div class="burden-track"><div class="burden-fill" style="width:70%"></div></div>
+          <div class="burden-pct">70%</div>
+        </div>
+        <div class="burden-row">
+          <div class="burden-label">Nota heimatilbúið námsefni <strong>að einhverju leyti</strong></div>
+          <div class="burden-track"><div class="burden-fill" style="width:90%"></div></div>
+          <div class="burden-pct">90%</div>
+        </div>
+        <div class="burden-row">
+          <div class="burden-label">Segjast <strong>aldrei</strong> nýta heimatilbúið efni</div>
+          <div class="burden-track"><div class="burden-fill" style="width:10%"></div></div>
+          <div class="burden-pct">10%</div>
+        </div>
+      </div>
+      <p class="chart-source">Heimild: Menntamálastofnun (2023). Könnun meðal 580 kennara og skólastjórnenda.</p>
+    </div>
+
+    <p class="body-text" style="margin-top: 1rem;">Þessar tölur endurspegla ekki vanhæfni kennarana — þær endurspegla fórnfýsi þeirra. Námsefnið sem til verður er oft gott. En það er gert á kvöldin og um helgar, samhliða öllum öðrum skyldum starfsins, án ritstjóra, kennslufræðings eða hönnuðar. Og það nýtist sjaldan öðrum en þeim sem gerðu það — í hverjum skóla er verið að finna upp hjólið upp á nýtt.<sup><a href="#fn10b" id="ref10b">10b</a></sup></p>
+
+    <p class="body-text" style="margin-top: 1rem;">Alþjóðlegar rannsóknir á starfsaðstæðum kennara sýna að íslenskir kennarar eyða meira tíma í undirbúning og stjórnsýslulegar skyldur en kennarar í flestum samanburðarlöndum.<sup><a href="#fn5a">5a</a></sup> Þegar lögbundið efni er ekki til eða úrelt þurfa kennarar að fylla í bilið sjálfir — sem þýðir minni tími í eiginlega kennslu, fagþróun og samskipti við nemendur.<sup><a href="#fn5">5</a></sup> Afleiðingarnar sjást í starfsánægju og stöðugleika stéttarinnar:</p>
+
+    <div class="data-grid" style="margin-top: 1.5rem;">
+      <div class="data-cell"><div class="data-n warn">57%</div><div class="data-desc">kennara telja líklegt að þeir séu enn í sama starfi eftir 5 ár</div><div class="data-src">Kennarasamband Íslands, 2024<sup><a href="#fn11" id="ref11">11</a></sup></div></div>
+      <div class="data-cell"><div class="data-n warn">18%</div><div class="data-desc">kennara 2023 voru án lögbundinna kennsluréttinda — þrefaldun frá 6% árið 2016</div><div class="data-src">OECD, 2025<sup><a href="#fn12" id="ref12">12</a></sup></div></div>
+      <div class="data-cell"><div class="data-n">17,5%</div><div class="data-desc">íslenskra kennara telja starfið metið að verðleikum í samfélaginu — alþjóðlegt meðaltal: 30,9%</div><div class="data-src">OECD TALIS, 2018<sup><a href="#fn13" id="ref13">13</a></sup></div></div>
+    </div>
+
+    <p class="body-text" style="margin-top: 1rem;">Þetta er kerfislæg þróun. Kennarar sem fá fjölbreytt og vandað námsefni í hendurnar geta einbeitt sér að kennslu. Kennarar sem verða að framleiða efnið sjálfir verða að verja þeim tíma í eitthvað annað — og það kemur niður á nemendum.</p>
+
+    <div class="callout">
+      <p>„Mér finnst að það þurfi að endurskoða allt skólastarf, við erum að gera svo miklu meira en ætlast er til af okkur."</p>
+      <cite>— Athugasemd úr könnun Kennarasambands Íslands, 2024</cite>
+    </div>
+
+    <div class="footnotes">
+      <ol start="10">
+        <li id="fn10">Menntamálastofnun (2023). <em>Könnun um námsgögn framtíðarinnar.</em> Menntamálastofnun. <a href="#ref10">↑</a></li>
+        <li id="fn10b">Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn — Skýrsla starfshóps um námsgögn:</em> „Kennarar gera kröfu um meiri fjölbreytni í vali á námsgögnum til að fylgja eftir faglegum áherslum [...] Í hverjum skóla er verið að finna upp hjólið upp á nýtt." <a href="#ref10b">↑</a></li>
+        <li id="fn11">Kennarasamband Íslands (2024). <em>Starfsaðstæður og álag í starfi — Niðurstöður könnunar meðal félagsmanna.</em> Félagsvísindastofnun Háskóla Íslands. Lögð fyrir 11.076 félagsmenn, 48% svör. <a href="#ref11">↑</a></li>
+        <li id="fn12">OECD (2025). <em>OECD Economic Surveys: Iceland 2025.</em> OECD Publishing. <a href="#ref12">↑</a></li>
+        <li id="fn13">OECD (2019). <em>TALIS 2018 results (Volume I).</em> OECD Publishing. https://doi.org/10.1787/1d0bc92a-en <a href="#ref13">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 5. LAGALEG SKYLDA -->
+<section class="section">
+  <div class="section-inner">
+    <p class="label">Lagalegur rammi</p>
+    <h2>Ríkið ber skyldu — en sveitarfélögin bera kostnaðinn</h2>
+
+    <p class="body-text">Lög um grunnskóla nr. 91/2008 eru skýr: kennsla í skyldunámi í opinberum grunnskólum skal veitt nemendum <strong>að kostnaðarlausu</strong>, og óheimilt er að krefja nemendur eða foreldra þeirra um greiðslu fyrir námsgögn sem nemendum er gert skylt að nota.<sup><a href="#fn14" id="ref14">14</a></sup> Lög um námsgögn nr. 71/2007 útfæra þessa skyldu nánar og kveða á um ábyrgð ríkisins á þróun, gerð og útgáfu námsgagna fyrir leik-, grunn- og framhaldsskóla.<sup><a href="#fn15" id="ref15">15</a></sup></p>
+
+    <p class="body-text" style="margin-top: 1rem;">En þegar þessi lögbundna skylda er ekki uppfyllt með fullnægjandi hætti — þegar fjármagn til námsgagna rýrnar á raunvirði ár eftir ár — lendir kostnaðurinn ekki á ríkinu. Hann lendir annars staðar.</p>
+
+    <div class="compare-row" style="margin: 2rem 0;">
+      <div class="compare-cell">
+        <div class="compare-label">Ríkið ákveður</div>
+        <div class="compare-body">Hversu mikið fjármagn fer til þróunar og dreifingar námsgagna í gegnum Miðstöð menntunar og skólaþjónustu, Námsgagnasjóð og Þróunarsjóð námsgagna. Þetta er ákvörðun sem tekin er í fjárlögum á Alþingi.</div>
+      </div>
+      <div class="compare-cell contrast">
+        <div class="compare-label">Sveitarfélögin bera</div>
+        <div class="compare-body">Þegar fjárfesting í námsgögnum er ófullnægjandi og þörfin fyrir sérkennslu og stuðning eykst, lendir sá aukakostnaður á sveitarfélögunum<sup><a href="#fn16" id="ref16">16</a></sup> <strong>— en þau hafa engin áhrif á þá fjárlagatöku ríkisins sem þetta ræðst af.</strong></div>
+      </div>
+    </div>
+
+    <p class="body-text">Mörg sveitarfélög hafa kosið að fjárfesta í námsgögnum umfram lögbundnar skyldur til að bæta upp bilið. En þar sem fjárhagslegur munur milli sveitarfélaga er töluverður skapar þetta beinan aðstöðumun eftir búsetu — <strong>börn í sveitarfélögum með meira fjárhagslegt svigrúm fá meiri aðgang að vönduðum námsgögnum en jafnaldrar þeirra annars staðar á landinu, þótt réttindi þeirra séu þau sömu að lögum.</strong></p>
+
+    <h3 class="sub" style="margin-top: 2.5rem;">Jöfnun tækifæra<br><span style="color: var(--accent);">Bitnar ekki jafnt á öllum</span></h3>
+    <p class="body-text">Þegar lögbundið námsgögn er ekki til, eru gömul eða úrelt, hefur bakgrunnur barnsins meiri áhrif — hvort foreldrar geti aðstoðað heima, hvort sveitarfélagið hafi fjármagn til að kaupa námsgögn, hvort kennarinn hafi tíma til að búa til sérsniðið efni. Þetta er mælanleg ójöfnun.<sup><a href="#fn17" id="ref17">17</a></sup></p>
+
+    <p class="body-text" style="margin-top: 1rem;">Alþjóðlegar mælingar sýna skýr merki um að munur á námsárangri nemenda eftir efnahagslegri og félagslegri stöðu hafi aukist síðustu ár á Íslandi — bæði í lesskilningi og læsi á náttúruvísindi.<sup><a href="#fn17b" id="ref17b">17b</a></sup> Þetta þýðir að íslensku menntakerfið, sem var um langt skeið talið meðal þeirra jöfnustu á heimsvísu, er að missa þann einkenni sinn.</p>
+
+    <div class="data-grid" style="grid-template-columns: 1fr 1fr; margin: 1.5rem 0;">
+      <div class="data-cell">
+        <div class="data-n warn">66 stig</div>
+        <div class="data-desc">munur í lesskilningi milli nemenda með og án erlends bakgrunns í alþjóðlegum mælingum 2022</div>
+        <div class="data-src">Mennta- og barnamálaráðuneytið, 2024<sup><a href="#fn17b">17b</a></sup></div>
+      </div>
+      <div class="data-cell">
+        <div class="data-n warn">↑ vaxandi</div>
+        <div class="data-desc">munur á námsárangri eftir félagslegum og efnahagslegum bakgrunni — aukning síðustu ár í lesskilningi og náttúruvísindum</div>
+        <div class="data-src">Mennta- og barnamálaráðuneytið, 2024<sup><a href="#fn17b">17b</a></sup></div>
+      </div>
+    </div>
+
+    <div class="footnotes">
+      <ol start="14">
+        <li id="fn14">Lög um grunnskóla nr. 91/2008, 4. gr. „Kennsla í skyldunámi í opinberum grunnskólum skal vera nemendum að kostnaðarlausu. Óheimilt er að krefja nemendur eða foreldra þeirra um greiðslu fyrir kennslu, þjónustu, námsgögn eða annað efni sem nemendum er gert skylt að nota í námi sínu." <a href="#ref14">↑</a></li>
+        <li id="fn15">Lög um námsgögn nr. 71/2007, 1.–2. gr. Sjá einnig: Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn — Skýrsla starfshóps um námsgögn.</em> <a href="#ref15">↑</a></li>
+        <li id="fn16">„Sveitarfélög annast rekstur grunnskóla og 97% kostnaðar opinberra aðila falla á þau." Skýrsla mennta- og menningarmálaráðherra til Alþingis um framkvæmd skólahalds í grunnskólum skólaárin 2010–2016 (2018). Sjá einnig: Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn.</em> <a href="#ref16">↑</a></li>
+        <li id="fn17">Mennta- og barnamálaráðuneytið (2024). <em>Fjölbreytt námsgögn.</em> Starfshópur um námsgögn: „Viðvarandi skortur námsgagna getur ýtt undir aðstöðumun skóla og nemenda þeirra. Misjöfn fjárhagsstaða sveitarfélaga getur valdið erfiðleikum og ójöfnuði milli nemenda." <a href="#ref17">↑</a></li>
+        <li id="fn17b">Mennta- og barnamálaráðuneytið (2024). <em>Hver er staðan í menntakerfinu? Samantekt.</em> September 2024: „Skýr merki eru um að munur á námsárangri nemenda eftir efnahagslegri- og félagslegri stöðu hafi aukist síðustu ár í lesskilningi og læsi á náttúruvísindi." Munurinn í lesskilningi milli nemenda með og án erlends bakgrunns nam 66 PISA-stigum 2022. <a href="#ref17b">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- 6. TILLÖGUR -->
+<section class="section shaded" id="tillögur">
+  <div class="section-inner">
+    <p class="label">Hvað þarf að gera?</p>
+    <h2>Tillögur sem 18 hagsmunaaðilar náðu samkomulagi um</h2>
+    <p class="body-text">Árið 2024 skipaði mennta- og barnamálaráðherra starfshóp sem náði sögulegu samkomulagi: Kennarasamband Íslands, Skólameistarafélag Íslands, Samband íslenskra sveitarfélaga, Félag íslenskra bókaútgefenda, Samtök menntatæknifyrirtækja, Samtök áhugafólks um skólaþróun, Samfés (nemendur), Hagþenkir, Háskóli Íslands, Háskólinn á Akureyri og Miðstöð menntunar og skólaþjónustu — allir sammála um vandann og lausnina. Lagafrumvarp var lagt fram þrisvar á Alþingi. Það hefur ekki verið afgreitt.<sup><a href="#fn19" id="ref19">19</a></sup></p>
+
+    <ul class="demands">
+      <li><div class="demand-n">1</div>Hækka heildarfjármagn til námsgagnakerfisins í 1.240–1.551 milljóna króna á ári, í áföngum, í átt að norðurlandaviðmiðum.</li>
+      <li><div class="demand-n">2</div>Leiðrétta fjárveitingar til Þróunarsjóðs námsgagna og Námsgagnasjóðs upp í a.m.k. upprunalegt raunvirði frá 2007.</li>
+      <li><div class="demand-n">3</div>Tryggja gjaldfrjáls námsgögn nemendum undir 18 ára aldri á öllum skólastigum — ekki aðeins í grunnskóla eins og nú er.</li>
+      <li><div class="demand-n">4</div>Setja upp miðlæga stafræna námsgagnaveitu þar sem kennarar — óháð búsetu og fjárhag sveitarfélags — fá jafnan aðgang að öllu námsgögn sem til er.</li>
+      <li><div class="demand-n">5</div>Gefa út útgáfuáætlun til 3–5 ára í samráði við hagsmunaaðila svo fjármagn sem veitt er beinist þangað sem þörfin er hvað brýnust.</li>
+    </ul>
+
+    <div class="callout">
+      <p>„OECD varar við því að sú 40 stiga lækkun sem þegar hefur orðið á meðaleinkunn Íslands í PISA frá 2006 til 2022 gæti dregið úr framleiðni þjóðarbúsins um meira en 5% til lengri tíma litið."</p>
+      <cite>— OECD Economic Surveys: Iceland, 2025<sup><a href="#fn20" id="ref20">20</a></sup></cite>
+    </div>
+
+    <div class="footnotes">
+      <ol start="19">
+        <li id="fn19">Mennta- og barnamálaráðuneytið (2024d). <em>Frumvarp til laga um námsgögn.</em> Þingskjal 223, 222. mál, 155. löggjafarþing 2024–2025. Frumvarpið var lagt fram þrisvar af tveimur ríkisstjórnum, nánast óbreytt. <a href="#ref19">↑</a></li>
+        <li id="fn20">OECD (2025). <em>OECD Economic Surveys: Iceland 2025.</em> OECD Publishing. https://doi.org/10.1787/4a6f33a2-en <a href="#ref20">↑</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section class="section" style="padding: 3rem 2.5rem;">
+  <div class="section-inner">
+    <p class="label">Um þessa síðu</p>
+    <p style="font-size: 15px; color: var(--dark-mid); line-height: 1.7; max-width: 60ch;">Þessi síða er óháð upplýsingaveita um stöðu námsgagna á Íslandi, byggð á opinberum skýrslum, rannsóknarniðurstöðum og alþjóðlegum gögnum. Allar staðhæfingar eru með heimildatilvísun. Markmið síðunnar er að gera þessar upplýsingar aðgengilegar öllum — foreldrum, kennurum, fjölmiðlum og þingmönnum.</p>
+
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">íslensk<span>námsgögn</span>.is</div>
+      <p>Óháð upplýsingaveita um stöðu námsgagna á Íslandi. Byggð á opinberum gögnum og rannsóknum. Maí 2026.</p>
+      <p style="margin-top: 0.75rem;">
+        <a href="https://www.dropbox.com/scl/fi/s6l2jn5v9mmcbhn7m9o7h/r-unarsj-ur-n-msgaga_Sta-a-n-msgagna_Mai2026.pdf?rlkey=hrka46pmrozu9lc70nmhqkkhw&dl=1" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Sækja skýrslu Þróunarsjóðs námsgagna (PDF)
+        </a>
+      </p>
+    </div>
+    <div>
+      <h4>Efni</h4>
+      <ul>
+        <li><a href="#vandinn">Hvað er vandinn?</a></li>
+        <li><a href="#áhrif">Áhrif á börnin</a></li>
+        <li><a href="#kennarar">Kennarar</a></li>
+        <li><a href="#tillögur">Tillögur</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+(function(){
+  var years=[2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
+  var cpi=[100,112.7,120.5,126.3,131.6,136.5,139.8,143.9,148.3,152.4,156.2,160.0,163.7,167.1,169.5,178.0,196.5,211.3,222.0,230.0];
+  var mms=[350,352,335,335,342,350,360,370,382,392,400,408,412,418,422,422,422,489,458,460];
+  var nsg=[100,100,93,90,88,86,85,85,85,84,84,84,83,83,83,82,82,82,82,82];
+  var thr=[100,100,90,88,88,88,88,90,90,90,90,90,90,90,90,90,90,90,90,90];
+  var actual=years.map(function(_,i){return mms[i]+nsg[i]+thr[i];});
+  var base=actual[0];
+  var maintained=cpi.map(function(c){return Math.round(base*c/100);});
+  var schoolCost=[46000,48500,46000,46200,47000,48500,50500,53500,56500,60500,65500,71500,77500,83500,90000,99000,110000,117000,121000,116000];
+  var nordicLow=schoolCost.map(function(c){return Math.round(c*0.015);});
+  var nordicAvg=schoolCost.map(function(c){return Math.round(c*0.025);});
+  var tc='#8a8680', gc='rgba(24,24,21,0.07)';
+  var ctx=document.getElementById('fundingChart').getContext('2d');
+  new Chart(ctx,{
+    type:'line',
+    data:{labels:years,datasets:[
+      {label:'Meðaltal á Norðurlöndum (2,5%)',data:nordicAvg,borderColor:'#2c2b27',borderWidth:1.5,borderDash:[3,4],fill:false,tension:0.3,pointRadius:0,pointHoverRadius:4,order:4},
+      {label:'Lágmarksviðmið á Norðurlöndum (1,5%)',data:nordicLow,borderColor:'#1a5c4a',borderWidth:1.5,borderDash:[6,4],fill:false,tension:0.3,pointRadius:0,pointHoverRadius:4,order:3},
+      {label:'Þyrfti til að viðhalda raunvirði 2007',data:maintained,borderColor:'#1a4a7a',borderWidth:2,borderDash:[8,4],fill:false,tension:0.3,pointRadius:0,pointHoverRadius:4,order:2},
+      {label:'Raunverulegt fjármagn',data:actual,borderColor:'#8b1a1a',backgroundColor:'rgba(139,26,26,0.06)',borderWidth:2.5,fill:true,tension:0.3,pointRadius:0,pointHoverRadius:5,order:1}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      layout:{padding:{right:125}},
+      plugins:{
+        legend:{display:false},
+        tooltip:{backgroundColor:'rgba(24,24,21,0.9)',titleColor:'rgba(255,255,255,0.9)',bodyColor:'rgba(255,255,255,0.7)',
+          callbacks:{title:function(i){return i[0].label+'';},label:function(i){return ' '+i.dataset.label+': ~'+i.parsed.y.toLocaleString('is-IS')+' m.kr.';}}}
+      },
+      scales:{
+        x:{grid:{color:gc},ticks:{color:tc,font:{size:12},maxRotation:0,callback:function(v,i){return(years[i]===2007||years[i]%3===0)?years[i]:''}}},
+        y:{min:0,max:3200,grid:{color:gc},ticks:{color:tc,font:{size:12},stepSize:500,callback:function(v){return v.toLocaleString('is-IS');}},
+          title:{display:true,text:'m.kr. (nafnvirði)',color:tc,font:{size:11}}}
+      }
+    },
+    plugins:[{id:'endLabels',afterDatasetsDraw:function(chart){
+      var c=chart.ctx;
+      var sets=[
+        {di:0,color:'#2c2b27',t:'~2.900 m.kr.',b:'(Norðurlönd meðaltal)'},
+        {di:1,color:'#1a5c4a',t:'~1.740 m.kr.',b:'(Norðurlönd lágmark)'},
+        {di:2,color:'#1a4a7a',t:'~1.400 m.kr.',b:'(raunvirði 2007)'},
+        {di:3,color:'#8b1a1a',t:'~630 m.kr.',b:'(raunverulegt)'}
+      ];
+      sets.forEach(function(s){
+        var meta=chart.getDatasetMeta(s.di);
+        if(!meta.hidden&&meta.data.length){
+          var pt=meta.data[meta.data.length-1];
+          c.save();
+          c.font='600 12px "Source Sans 3",sans-serif';
+          c.fillStyle=s.color;c.textAlign='left';c.textBaseline='middle';
+          c.fillText(s.t,pt.x+10,pt.y-8);
+          c.font='11px "Source Sans 3",sans-serif';c.fillStyle='#8a8680';
+          c.fillText(s.b,pt.x+10,pt.y+8);
+          c.restore();
+        }
+      });
+    }}]
+  });
+})();
+</script>
+</body>
+</html>
