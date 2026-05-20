@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Íslensk námsgögn — Hver er staðan?</title>
+<title>Íslensk námsgögn — Hvað er að gerast?</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231a4a7a'/><path d='M4 4L4 28Q15 26 16 25L16 7Q15 6 4 4Z' fill='white'/><path d='M28 4L28 28Q17 26 16 25L16 7Q17 6 28 4Z' fill='%231a4a7a'/><text x='10' y='16' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='12' font-weight='600' fill='%231a4a7a'>%C3%8D</text><text x='22' y='16' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-size='12' font-weight='600' fill='white'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,9 +33,38 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color
 nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 60px; }
 .nav-brand { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
 .nav-brand span { color: var(--accent); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a { font-size: 14px; font-weight: 400; color: var(--dark-mid); text-decoration: none; transition: color 0.15s; }
 .nav-links a:hover { color: var(--ink); }
+
+/* HAMBURGER */
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; color: var(--ink); }
+.nav-hamburger svg { display: block; }
+
+/* NAV CTA — always visible */
+.nav-cta-always { display: none; } /* hidden on desktop, shown on mobile via media query */
+
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; align-items: center; }
+  .nav-cta-always { display: inline-block; }
+  .nav-cta-desktop { display: none; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 60px; left: 0; right: 0;
+    background: white;
+    border-bottom: 1px solid var(--rule);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 0.85rem 2rem; font-size: 15px; border-bottom: 1px solid var(--rule); }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-cta { border-radius: 0 !important; background: var(--off-white) !important; color: var(--accent) !important; }
+}
 
 /* HERO */
 .hero { min-height: 88vh; display: flex; align-items: center; padding: 6rem 2.5rem 5rem; background: var(--off-white); position: relative; overflow: hidden; }
@@ -179,6 +208,52 @@ footer a { color: rgba(255,255,255,0.5); }
 footer h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: rgba(255,255,255,0.25); margin-bottom: 0.75rem; }
 footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
 
+/* NAV CTA BUTTON */
+.nav-cta {
+  background: var(--accent) !important;
+  color: white !important;
+  padding: 0.35rem 0.9rem !important;
+  border-radius: 3px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: #0f3460 !important; }
+
+/* HERO CTA */
+.hero-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: white;
+  color: var(--accent);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, color 0.15s;
+  border: 2px solid white;
+}
+.hero-cta:hover { background: transparent; color: white; }
+
+/* UNDIRSKRIFT SECTION */
+.undirskrift-section { background: var(--accent); padding: 4rem 2.5rem; color: white; }
+.undirskrift-inner { max-width: 860px; margin: 0 auto; }
+.undirskrift-inner .label { color: rgba(255,255,255,0.5); }
+.undirskrift-inner h2 { font-family: 'Lora', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; color: white; margin-bottom: 1.2rem; letter-spacing: -0.02em; line-height: 1.2; }
+.undirskrift-body { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 58ch; margin-bottom: 0.8rem; }
+.undirskrift-body strong { color: white; }
+.undirskrift-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; margin: 1.5rem 0 2rem; }
+.us-stat { background: rgba(255,255,255,0.08); padding: 1rem 1.25rem; }
+.us-stat-n { font-family: 'Lora', serif; font-size: 1.9rem; font-weight: 700; color: #ffd280; line-height: 1; margin-bottom: 0.4rem; }
+.us-stat-d { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+.undirskrift-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: var(--accent); font-family: 'Source Sans 3', sans-serif; font-size: 16px; font-weight: 600; padding: 0.85rem 2rem; border-radius: 3px; text-decoration: none; letter-spacing: 0.01em; transition: background 0.15s; margin-bottom: 1rem; }
+.undirskrift-btn:hover { background: #f0f4f8; }
+.undirskrift-note { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 52ch; margin-top: 0.75rem; }
+
 @media (max-width: 700px) {
   .hero-stats { grid-template-columns: 1fr; }
   .pisa-grid, .compare-row { grid-template-columns: 1fr; }
@@ -187,9 +262,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
   .bar-row { grid-template-columns: 80px 1fr 55px; }
   .burden-label { width: 160px; }
   nav { padding: 0 1.25rem; }
-  .nav-links { gap: 1rem; }
   .section { padding: 3.5rem 1.25rem; }
-  .hero { padding: 3.5rem 1.25rem; }
 }
 </style>
 </head>
@@ -204,11 +277,17 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
       <text x="7.5" y="10.5" text-anchor="middle" dominant-baseline="central" font-family="'Source Sans 3',system-ui,sans-serif" font-size="9" font-weight="600" fill="#1a4a7a">Í</text>
       <text x="24.5" y="10.5" text-anchor="middle" dominant-baseline="central" font-family="'Source Sans 3',system-ui,sans-serif" font-size="9" font-weight="600" fill="white">N</text>
     </svg>íslensk<span>námsgögn</span>.is</a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="hamburger" aria-label="Opna valmynd" aria-expanded="false">
+    <svg id="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg id="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="https://island.is/undirskriftalistar/f15800c3-e432-4096-af98-e519161e774d" target="_blank" class="nav-cta nav-cta-always">Skrifaðu undir</a>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#vandinn">Vandinn</a></li>
     <li><a href="#áhrif">Áhrif</a></li>
     <li><a href="#kennarar">Kennarar</a></li>
     <li><a href="#tillögur">Tillögur</a></li>
+    <li class="nav-cta-desktop"><a href="https://island.is/undirskriftalistar/f15800c3-e432-4096-af98-e519161e774d" target="_blank" class="nav-cta">✍ Skrifaðu undir</a></li>
   </ul>
 </nav>
 
@@ -217,7 +296,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
   <div class="hero-inner">
     <p class="hero-eyebrow">Íslenskt menntakerfi · Maí 2026</p>
     <h1 class="hero-h1">Námsgögn<br><span style="color: var(--accent);">Vanrækt grunnstoð</span></h1>
-    <p class="hero-lead">Í nær tvo áratugi hefur fjármagn til þróunar, útgáfu og kaupa á námsgögnum rýrnað í íslenska skólakerfinu. Áhrifin eru mælanleg: námsárangur barna er að falla, munur á námsárangri milli sveitarfélaga eykst og félagslegur bakgrunnur er farinn að hafa meiri áhrif á hvernig börnum gengur í skóla og kennarar eyða sífellt meiri tíma í að búa til námsgögn — tíma sem ætti að fara í kennslu.<br><br><strong>Íslenskir kennarar eru ekki lakari en kennarar annars staðar. Þeir fá bara minna til að vinna með.</strong></p>
+    <p class="hero-lead">Í nær tvo áratugi hefur fjármagn til þróunar og kaupa á námsgögn rýrnað í íslenska skólakerfinu. Áhrifin eru mælanleg: námsárangur barna er að falla, munur á námsárangri milli sveitarfélaga eykst og félagslegur bakgrunnur er farinn að hafa meiri áhrif á hvernig börnum gengur í skóla og kennarar eyða sífellt meiri tíma í að búa til námsgögn — tíma sem ætti að fara í kennslu.<br><br><strong>Íslenskir kennarar eru ekki lakari en kennarar annars staðar. Þeir fá bara minna til að vinna með.</strong></p>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-n">~35%</div>
@@ -233,6 +312,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
       </div>
     </div>
     <p class="hero-scroll">Lestu meira</p>
+    <a href="#undirskrift" class="hero-cta">✍ Skrifaðu undir ákallið</a>
   </div>
 </div>
 
@@ -566,12 +646,25 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
 
 <div class="hr"></div>
 
-<section class="section" style="padding: 3rem 2.5rem;">
+<!-- UNDIRSKRIFT -->
+<section class="undirskrift-section" id="undirskrift">
+  <div class="undirskrift-inner">
+    <p class="label">Taktu afstöðu</p>
+    <h2>Skrifaðu undir ákall um aðgerðir í námsgögnum</h2>
+    <p class="undirskrift-body">Átján helstu hagsmunaaðilar menntakerfisins náðu árið 2024 samkomulagi um lausnina. Lagafrumvarp var lagt fram þrisvar á Alþingi. Það hefur ekki verið afgreitt. <strong>Undirskriftalistinn verður afhentur mennta- og barnamálaráðuneytinu þann 13. ágúst 2026 á viðburðinum Íslensk námsgögn — Hvað er til?</strong></p>
+    <a href="https://island.is/undirskriftalistar/f15800c3-e432-4096-af98-e519161e774d" target="_blank" class="undirskrift-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      Skrifaðu undir á Ísland.is
+    </a>
+    <p class="undirskrift-note">Undirskriftalistinn er á opinberu vettvangi Ísland.is og krefst rafræns skilríkis. Gildir til 12. ágúst 2026.</p>
+  </div>
+</section>
+
+<div class="hr"></div>
+<section class="section" style="padding: 4.5rem 2.5rem;">
   <div class="section-inner">
     <p class="label">Um þessa síðu</p>
     <p style="font-size: 15px; color: var(--dark-mid); line-height: 1.7; max-width: 60ch;">Þessi síða er óháð upplýsingaveita um stöðu námsgagna á Íslandi, byggð á opinberum skýrslum, rannsóknarniðurstöðum og alþjóðlegum gögnum. Allar staðhæfingar eru með heimildatilvísun. Markmið síðunnar er að gera þessar upplýsingar aðgengilegar öllum — foreldrum, kennurum, fjölmiðlum og þingmönnum.</p>
-
-
   </div>
 </section>
 
@@ -581,7 +674,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
       <div class="footer-brand">íslensk<span>námsgögn</span>.is</div>
       <p>Óháð upplýsingaveita um stöðu námsgagna á Íslandi. Byggð á opinberum gögnum og rannsóknum. Maí 2026.</p>
       <p style="margin-top: 0.75rem;">
-        <a href="https://www.dropbox.com/scl/fi/s6l2jn5v9mmcbhn7m9o7h/r-unarsj-ur-n-msgaga_Sta-a-n-msgagna_Mai2026.pdf?rlkey=hrka46pmrozu9lc70nmhqkkhw&dl=1" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;">
+        <a href="https://www.dropbox.com/scl/fi/291v661utpluln5tsbd3a/Sta-a-n-msgagna-Sk-rsla-r-unarsj-s-n-msgagna.pdf?rlkey=2876tr1ngiljeqzlb784gyzn8&dl=1" target="_blank" style="display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Sækja skýrslu Þróunarsjóðs námsgagna (PDF)
         </a>
@@ -600,7 +693,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
         <li><a href="#áhrif">Áhrif á börnin</a></li>
         <li><a href="#kennarar">Kennarar</a></li>
         <li><a href="#tillögur">Tillögur</a></li>
-      </ul>
+        <li><a href="#undirskrift">Undirskrift</a></li>
     </div>
   </div>
 </footer>
@@ -668,6 +761,26 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
     }}]
   });
 })();
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const closeIcon = document.getElementById('close-icon');
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+  hamburgerIcon.style.display = open ? 'none' : 'block';
+  closeIcon.style.display = open ? 'block' : 'none';
+});
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburgerIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+  });
+});
 </script>
 </body>
 </html>
