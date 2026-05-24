@@ -341,19 +341,21 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
 /* HERO CTA */
 .hero-cta {
   display: inline-block;
-  margin-top: 1.5rem;
-  background: white;
-  color: var(--accent);
+  margin-top: 2rem;
+  background: var(--accent);
+  color: white;
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 0.7rem 1.6rem;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 1rem 2.2rem;
   border-radius: 3px;
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: background 0.15s, color 0.15s;
-  border: 2px solid white;
+  transition: background 0.15s, box-shadow 0.15s;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
+.hero-cta:hover { background: #0f3460; border-color: #0f3460; }
 .hero-cta:hover { background: transparent; color: white; }
 
 /* UNDIRSKRIFT SECTION */
@@ -420,8 +422,8 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
         <div class="hero-stat-desc">Fjármagn til kerfisins á raunvirði miðað við 2007</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-n warn">47%</div>
-        <div class="hero-stat-desc">drengja í 10. bekk ná ekki grunnhæfni í lesskilningi — tvöföldun frá 2009</div>
+        <div class="hero-stat-n">20 ár</div>
+        <div class="hero-stat-desc">Samfelld hjöðnun fjármögnunar námsgagna</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-n">0,4%</div>
@@ -429,7 +431,7 @@ footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.35re
       </div>
     </div>
     <p class="hero-scroll">Lestu meira</p>
-    <a href="#undirskrift" class="hero-cta">✍ Skrifaðu undir ákallið</a>
+    <a href="https://island.is/undirskriftalistar/f15800c3-e432-4096-af98-e519161e774d" target="_blank" class="hero-cta">✍&nbsp;&nbsp;Skrifaðu undir ákallið</a>
   </div>
 </div>
 
